@@ -1,0 +1,44 @@
+<h1>Update User</h1>
+
+<div class="err" *ngIf="err"><i class="fa-solid fa-triangle-exclamation"></i>{{ err }}<span class="err-remove" (click)="remove()">X</span></div>
+
+<form [formGroup]="formData" (ngSubmit)="form()">
+    <div class="input-group">
+        <label for="img">
+            <input type="file" id="img" (change)="changeImg($event)">
+            <img src="{{ img || '../../assets/img/add-img.png' }}" alt="" id="show_img" draggable="false">
+        </label>
+    </div>
+    <div class="input-group">
+        <input type="text" formControlName="name" placeholder="Enter your name">
+        <span class="input-err" *ngIf="formData.get('name').touched && formData.get('name').errors?.['required']">Name is required, please enter the name.</span>
+        <span class="input-err" *ngIf="formData.get('name').touched && formData.get('name').errors?.['minlength']">Name should content atleast <b>2</b> character and you have enter <b>{{ formData.get('name').errors?.['minlength'].actualLength }}</b> character.</span>
+        <span class="input-err" *ngIf="formData.get('name').touched && formData.get('name').errors?.['maxlength']">Name cannot content more <b>30</b> character and you have enter <b>{{ formData.get('name').errors?.['maxlength'].actualLength }}</b> characters.</span>
+
+    </div>
+    <div class="input-group">
+        <input type="email" formControlName="email" placeholder="Enter your email id">
+        <span class="input-err" *ngIf="formData.get('email').touched && formData.get('email').errors?.['required']">Email address is required please enter the email address</span>
+        <span class="input-err" *ngIf="formData.get('email').touched && formData.get('email').errors?.['minlength']">Email should content atleast <b>10</b> character and you have enter <b>{{ formData.get('email').errors?.['minlength'].actualLength }}</b> character.</span>
+        <span class="input-err" *ngIf="formData.get('email').touched && formData.get('email').errors?.['maxlength']">Email cannot content more <b>75</b> character and you have enter <b>{{ formData.get('email').errors?.['maxlength'].actualLength }}</b> characters.</span>
+        <span class="input-err" *ngIf="formData.get('email').touched && formData.get('email').errors?.['email']">Invalid email address. Please enter valid email address.</span>
+    </div>
+    <div class="input-group">
+        <select formControlName="category">
+            <option value="" [defaultSelected]="true" disabled>Select Programming language</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="javascript">JavaScript</option>
+            <option value="typescript">TypeScript</option>
+            <option value="nodejs">NodeJs</option>
+            <option value="mongodb">Mongodb</option>
+        </select>
+        <span class="input-err" *ngIf="formData.get('category').touched && formData.get('category').errors?.['required']">Category is required please select any category atleast one character.</span> 
+    </div>
+
+    <div class="btn-group">
+        <button [disabled]="formData.invalid">Submit</button>
+        <button  type="reset">Reset</button>
+        <button routerLink="/">Cancel</button>
+    </div>
+</form>

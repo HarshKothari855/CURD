@@ -1,0 +1,192 @@
+@import '../../styles.scss';
+
+h1 {
+    text-align: center;
+    font-family: $primaryFont;
+    color: $primaryColor;
+    margin-top: 40px;
+}
+
+.err {
+    background-color: red;
+    max-width: 500px;
+    margin: 0px auto;
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    font-family: sans-serif;
+    position: relative;
+
+    i {
+        margin-right: 10px;
+    }
+
+    .err-remove {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        margin-right: 5px;
+        margin-top: 5px;
+        font-size: 1.3rem;
+        cursor: pointer;;
+    }
+}
+
+form {
+    max-width: 500px;
+    margin: 20px auto ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 5px;
+    padding: 30px 50px;
+
+    .input-group {
+        margin-top: 15px;
+
+        input {
+            width: 100%;
+            font-size: 1.3rem;
+            padding: 5px 5px 2px 5px;
+            border: none;
+            border-bottom: 2px solid $primaryColor;
+            outline: none;
+            letter-spacing: 1px;
+            font-family: $primaryFont;
+            color: $primaryColor;
+
+
+            &[type="email"] {
+                text-transform: lowercase;
+            }
+            &::placeholder {
+                text-transform: none;
+            }
+        }
+        .input-err {
+            display: block;
+            color: red;
+            margin-top: 5px;
+            font-family: sans-serif;
+
+            &::selection {
+                background-color: red;
+                color: #ffffff
+            }
+        }
+        
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 1.2rem;
+            border: 2px solid $primaryColor;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            outline: none;
+            background-color: #ffffff;
+            color: $primaryColor
+        }
+
+        // img 
+        label {
+            max-width: 150px;
+            height: 150px;
+            margin: auto;
+            display: block;
+            border-radius: 5px;
+            outline: 4px dashed $primaryColor;
+
+
+            input[type="file"] {
+                display: none;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                padding: 10px;
+                border-radius: 15px;
+            }
+        }
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        button {
+            margin-top: 15px;
+            padding: 10px 15px;
+            font-size: 1.0rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            border: 1px solid $primaryColor;
+            color: $primaryColor;
+            background-color: #ffffff;
+            position: relative;
+            z-index: 0;
+            transition: all 1s;
+
+            &:hover {
+                color: #ffffff;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 0px;
+                height: 0px;
+                transition: all 1s;
+                z-index: -1;
+            }
+
+            &:hover::before {
+                background-color: $primaryColor;
+                width: 50%;
+                height: 100%;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0px;
+                right: 0px;
+                height: 0px;
+                transition: all 1s;
+                z-index: -1;
+            }
+
+            &:hover::after {
+                background-color: $primaryColor;
+                width: 50%;
+                height: 100%;
+            }
+
+            &:disabled::before, &:disabled::after, &:disabled:hover {
+                content: none;
+                box-shadow: none;
+                color: $primaryColor;
+                cursor: not-allowed;
+            }
+
+            &:disabled {
+                opacity: 0.6;
+            }
+        }
+    }
+}
+
+input.ng-touched.ng-invalid {
+    border-bottom: 2px solid red !important; 
+    color: red !important
+}
+
+select.ng-touched.ng-invalid {
+    border: 2px solid red !important;
+    color: red !important;
+}

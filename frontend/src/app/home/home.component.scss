@@ -1,0 +1,78 @@
+@import '../../styles.scss';
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    font-family: $primaryFont;
+    letter-spacing: 20px;
+    font-size: 4.5rem;
+    color: $primaryColor
+}
+
+.btn-group {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+
+    .total {
+        padding: 10px 40px;
+        font-size: 1.3rem;
+        border: 2px solid $primaryColor;
+        border-radius: 5px;
+        color: $primaryColor;
+        font-family: $primaryFont;
+        cursor: default;
+    }
+
+    button {
+        padding: 10px 40px;
+        font-size: 1.3rem;
+        border: 2px solid $primaryColor;
+        border-radius: 5px;
+        color: $primaryColor;
+        font-family: $primaryFont;
+        cursor: pointer;
+        position: relative;
+        transition: all 1s;
+        background-color: #ffffff;
+        z-index: 0;
+
+        &:hover {
+            color: #ffffff;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 0px;
+            height: 0px;
+            transition: all 1s;
+            z-index: -1;
+        }
+
+        &:hover::before {
+            background-color: $primaryColor;
+            width: 50%;
+            height: 100%;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            height: 0px;
+            transition: all 1s;
+            z-index: -1;
+        }
+
+        &:hover::after {
+            background-color: $primaryColor;
+            width: 50%;
+            height: 100%;
+        }
+    }
+}

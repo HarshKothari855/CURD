@@ -1,0 +1,22 @@
+<table>
+    <tr>
+        <th>Sr No</th>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Email</th>
+        <th>Language</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr *ngFor="let data of apiData; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ data.name | firstLetterCapital }}</td>
+        <td>
+            <img src="{{ data.img_url || '../../../../assets/img/add-img.png' }}" alt="">
+        </td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.category | firstLetterCapital }}</td>
+        <td><i class="fa-solid fa-pen-to-square" routerLink="./edit/{{data._id}}"></i></td>
+        <td><i class="fa-solid fa-trash" (click)="deleteUser(data._id)"></i></td>
+    </tr>
+</table>

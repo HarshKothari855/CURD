@@ -1,0 +1,57 @@
+@import '../../styles.scss';
+
+table {
+    width: 100%;
+    border: 1px solid $primaryColor;
+    border-collapse: collapse;
+    border: none;
+    margin-top: 50px;
+
+    tr {
+        th {    
+            font-size: 1.4rem;
+            color: $primaryColor;
+            font-family: $primaryFont;
+            padding: 20px 0px;
+        }
+
+        td {
+            border: 1px solid $primaryColor;
+            text-align: center;
+            padding: 5px 0px;
+            font-size: 1.2rem;
+            color: $primaryColor;
+            font-family: $primaryFont;
+            border-right: none;
+            border-left: none;
+            border-bottom: none;
+
+            img {
+                width: 80px;
+                height: 60px;
+                border: 2px dashed $primaryColor;
+                padding: 5px;
+                border-radius: 5px;   
+            }
+
+            i {
+                font-size: 1.6rem;
+                cursor: pointer;
+                transition: all 1s;
+
+                &:hover {
+                    background-color: $primaryColor;
+                    color: #ffffff;
+                    padding: 7px;
+                    border-radius: 5px;
+                }
+            }
+            .fa-trash:hover {
+                background-color: red;
+                color: #ffffff;
+                padding: 7px;
+                border-radius: 5px;
+            }
+        }
+    }
+}
